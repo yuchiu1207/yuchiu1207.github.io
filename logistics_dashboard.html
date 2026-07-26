@@ -2259,6 +2259,292 @@ td{font-size:12px !important;line-height:1.75 !important;letter-spacing:.02em !i
 }
 </style>
 
+
+
+<style id="user-revision-20260726-v17-mobile-layout-fix">
+/* === Mobile layout fix ===
+   The later desktop theme reintroduced a 250px + 1fr shell on phones.
+   Force the mobile shell back to a single full-width content column and
+   keep every page/grid inside the viewport. Desktop/tablet styles are untouched. */
+@media (max-width:780px){
+  html,body{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    overflow-x:hidden !important;
+  }
+
+  .app-shell{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    min-height:100vh !important;
+    margin:0 !important;
+    border:0 !important;
+    border-radius:0 !important;
+    overflow:visible !important;
+  }
+
+  .main{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin:0 !important;
+    padding:12px 12px calc(126px + env(safe-area-inset-bottom)) !important;
+    overflow:visible !important;
+  }
+
+  .topbar,
+  .page,
+  .page.active,
+  .page-header,
+  .dashboard-grid,
+  .interactive-grid,
+  .trend-risk-grid,
+  .card,
+  article.card,
+  .tab-panel,
+  .table-wrap,
+  .control-row,
+  .story-grid,
+  .two-col,
+  .three-col{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+
+  .topbar{
+    margin:-12px -12px 16px !important;
+    width:calc(100% + 24px) !important;
+    max-width:none !important;
+  }
+
+  .page-header,
+  #page-overview .page-header,
+  .page:not(#page-overview) .page-header{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+    overflow:visible !important;
+  }
+
+  .page-title{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+  .page-title .eyebrow{
+    max-width:100% !important;
+    white-space:nowrap !important;
+  }
+  .page-title h1,
+  #page-overview .page-title h1,
+  .page:not(#page-overview) .page-title h1{
+    max-width:100% !important;
+    min-width:0 !important;
+    font-size:clamp(32px,10vw,40px) !important;
+    line-height:1.08 !important;
+    letter-spacing:.06em !important;
+    word-break:keep-all !important;
+    overflow-wrap:normal !important;
+  }
+  .page-title p,
+  #page-overview .page-title p,
+  .page:not(#page-overview) .page-title p{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    font-size:13px !important;
+    line-height:1.8 !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .dashboard-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:12px !important;
+  }
+  .dashboard-grid > .col-12,
+  .dashboard-grid > .col-9,
+  .dashboard-grid > .col-8,
+  .dashboard-grid > .col-7,
+  .dashboard-grid > .col-6,
+  .dashboard-grid > .col-5,
+  .dashboard-grid > .col-4,
+  .dashboard-grid > .col-3,
+  .dashboard-grid > .col-2,
+  #page-overview .trend-risk-grid,
+  #page-overview .priority-callout{
+    grid-column:1 / -1 !important;
+  }
+  .dashboard-grid > .metric-card{
+    grid-column:span 1 !important;
+    min-width:0 !important;
+  }
+
+  .metric-card{
+    padding:16px !important;
+    min-height:134px !important;
+  }
+  .metric-card .metric-top{
+    gap:8px !important;
+  }
+  .metric-card .metric-value,
+  #page-overview .metric-value{
+    font-size:clamp(24px,7.2vw,32px) !important;
+    overflow-wrap:anywhere !important;
+  }
+  .metric-card .card-title,
+  #page-overview .card-title{
+    font-size:13px !important;
+  }
+  .metric-card .metric-sub,
+  #page-overview .metric-sub{
+    font-size:11px !important;
+    line-height:1.65 !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  #page-overview .trend-risk-grid{
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    gap:12px !important;
+  }
+  #page-overview .indexed-chart{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    gap:6px !important;
+    overflow:hidden !important;
+  }
+  #page-overview .indexed-month,
+  #page-overview .indexed-pair{
+    min-width:0 !important;
+  }
+  #page-overview .actual-value-chart .indexed-bar,
+  #page-overview .actual-value-chart .indexed-bar.ship{
+    width:18px !important;
+    max-width:18px !important;
+  }
+  #page-overview .actual-value-chart .indexed-value{
+    font-size:8px !important;
+  }
+  #page-overview .indexed-label{
+    font-size:11px !important;
+  }
+
+  .interactive-grid{
+    grid-template-columns:minmax(0,1fr) !important;
+  }
+  .i-col-12,.i-col-8,.i-col-7,.i-col-6,.i-col-5,.i-col-4,.i-col-3{
+    grid-column:1 / -1 !important;
+    min-width:0 !important;
+  }
+
+  .control,
+  .control[style*="min-width"]{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+  .control-row{
+    align-items:stretch !important;
+  }
+  .control-row > .control{
+    flex:1 1 100% !important;
+  }
+
+  .dynamic-bar,
+  #page-logistics [data-panel="orders"] .dynamic-bar,
+  #page-tower #strategyBars .dynamic-bar{
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+  #page-tower #strategyBars .dynamic-bar{
+    grid-template-columns:112px minmax(0,1fr) 28px !important;
+    gap:8px !important;
+  }
+  #page-tower #strategyBars .dynamic-bar > span:first-child{
+    white-space:normal !important;
+    overflow-wrap:anywhere !important;
+  }
+
+  .table-wrap{
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+  }
+  table{
+    max-width:none !important;
+  }
+
+  #realMap{
+    width:100% !important;
+    max-width:100% !important;
+    height:330px !important;
+  }
+
+  /* Bottom navigation: show all eight sections inside the viewport. */
+  .sidebar{
+    left:8px !important;
+    right:8px !important;
+    bottom:calc(8px + env(safe-area-inset-bottom)) !important;
+    width:auto !important;
+    max-width:calc(100% - 16px) !important;
+    height:88px !important;
+    min-height:88px !important;
+    padding:7px 6px !important;
+    overflow:hidden !important;
+  }
+  .nav-list{
+    display:grid !important;
+    grid-template-columns:repeat(8,minmax(0,1fr)) !important;
+    gap:2px !important;
+    width:100% !important;
+    height:100% !important;
+    overflow:visible !important;
+  }
+  .nav-item{
+    width:auto !important;
+    min-width:0 !important;
+    height:72px !important;
+    padding:5px 1px !important;
+    gap:4px !important;
+    scroll-snap-align:none !important;
+  }
+  .nav-item > span:first-child{
+    font-size:15px !important;
+    line-height:1 !important;
+  }
+  .nav-item .nav-label{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    font-size:8px !important;
+    line-height:1.18 !important;
+    font-weight:760 !important;
+    text-align:center !important;
+    white-space:normal !important;
+    word-break:normal !important;
+    overflow-wrap:anywhere !important;
+  }
+  .nav-item .nav-badge{display:none !important;}
+}
+
+@media (max-width:430px){
+  .main{padding-left:10px !important;padding-right:10px !important;}
+  .topbar{margin-left:-10px !important;margin-right:-10px !important;width:calc(100% + 20px) !important;}
+  .dashboard-grid{gap:10px !important;}
+  .metric-card{padding:14px !important;}
+  .metric-card .metric-value,#page-overview .metric-value{font-size:clamp(23px,7vw,29px) !important;}
+  .metric-icon{width:34px !important;height:34px !important;}
+  .nav-item .nav-label{font-size:7.5px !important;}
+}
+</style>
 </head><body>
 <div class="app-shell">
 <aside class="sidebar">
